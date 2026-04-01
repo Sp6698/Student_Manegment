@@ -1,0 +1,61 @@
+{
+  "info": {
+    "name": "Student Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base", "value": "http://localhost:5000/api" }],
+  "item": [
+    {
+      "name": "Get All Students (paginated)",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/students?page=1&limit=10&search="
+      }
+    },
+    {
+      "name": "Get Student by ID (with marks)",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/students/1"
+      }
+    },
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "url": "{{base}}/students",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"age\": 20,\n  \"marks\": [\n    { \"subject_id\": 1, \"score\": 85 },\n    { \"subject_id\": 2, \"score\": 90 }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PUT",
+        "url": "{{base}}/students/1",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Updated\",\n  \"email\": \"john.updated@example.com\",\n  \"age\": 21,\n  \"marks\": [\n    { \"subject_id\": 1, \"score\": 92 }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "url": "{{base}}/students/1"
+      }
+    },
+    {
+      "name": "Get All Subjects",
+      "request": {
+        "method": "GET",
+        "url": "{{base}}/students/subjects"
+      }
+    }
+  ]
+}
