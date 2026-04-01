@@ -32,7 +32,14 @@ const createUserSchema = Joi.object({
   password: Joi.string().min(6).required(),
   role: Joi.string().valid('STUDENT', 'TEACHER').optional(),
   age: Joi.number().integer().min(1).max(120).optional(),
-  teacher_id: Joi.string().uuid().optional().allow('', null), // for assigning student to teacher
+  teacher_id: Joi.string().uuid().optional().allow('', null),
+  marks: Joi.array().items(
+    Joi.object({
+      subject_id: Joi.number().integer().required(),
+      score: Joi.number().min(0).max(100).required(),
+      remarks: Joi.string().max(255).allow('').optional(),
+    })
+  ).optional().default([]),
 });
 
 const updateUserSchema = Joi.object({
