@@ -7,7 +7,7 @@ export default defineConfig({
     // Dev proxy — forwards /api calls to backend
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'http://localhost:5001',
         changeOrigin: true,
         secure: false,
       },
